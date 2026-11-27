@@ -1,5 +1,5 @@
 ---
-title: SceneForge 技术架构总览
+title: 镜造（SceneForge）技术架构总览
 doc_id: DEV-001
 version: 0.5-draft
 date_created: 2026-11-27
@@ -7,7 +7,7 @@ last_updated: 2026-11-27
 status: discussion-draft
 ---
 
-# 技术架构总览
+# 镜造（SceneForge）技术架构总览
 
 ## 1. 架构目标
 

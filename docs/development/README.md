@@ -1,13 +1,13 @@
 ---
-title: SceneForge 开发文档
+title: 镜造（SceneForge）开发文档
 doc_id: DEV-000
-version: 0.3-draft
+version: 0.4-draft
 date_created: 2026-11-27
 last_updated: 2026-11-27
 status: discussion-draft
 ---
 
-# SceneForge 开发文档
+# 镜造（SceneForge）开发文档
 
 本组文档把产品需求 RFC 转换为技术架构、首阶段范围和后续实现路线。产品行为以 [spec/ 目录](../../spec/) 中 RFC-001 至 RFC-008 为准；若技术文档与 RFC 冲突，应先修订 RFC 或在决策记录中说明，不得静默缩减产品需求。
 
@@ -22,14 +22,17 @@ status: discussion-draft
 | [媒体管线](media-pipeline.md) | 首阶段 FFmpeg/ffprobe 使用边界，以及后续时间线与专业剪辑引擎决策 |
 | [阶段路线](roadmap.md) | 将完整产品能力分成可验收的实现阶段，不改变 RFC 的长期范围 |
 | [技术决策记录](decisions.md) | 已确认决策、暂定方案、风险和需要原型验证的事项 |
+| [编码规范](coding-standards.md) | C++20、UTF-8、中文注释、文件职责、错误日志、测试和第三方依赖约定 |
 
 ## 已确认输入
 
+- 产品名称：中文名“镜造”，英文名“SceneForge”；中文用户界面和中文文档以“镜造”为主称呼，仓库名及英文标识保留“SceneForge”。
 - 桌面技术路线：Qt 6、C++20、QML/Qt Quick。
 - 用户可在设置中指定作品资料库位置；资料库内的作品目录布局仍是待确认的技术方案。
 - 文本、图片等 AI 能力可分别配置服务；单次任务允许临时切换服务。
 - 首阶段先完成故事/剧本、分镜、参考图和轻量媒体工具；视频/动画、配音和专业剪辑后置。
 - 完整产品仍覆盖 RFC-001 至 RFC-008 定义的目标能力。
+- 编码基线：标准 C++20、UTF-8、中文注释、统一命名、单一文件职责、安全日志，以及按边界编写测试并审查第三方依赖。
 
 ## 文档状态
 
