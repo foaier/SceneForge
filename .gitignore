@@ -1,0 +1,7 @@
+/build/
+/app/build/
+/cmake-build-*/
+/CMakeUserPresets.json
+/.qtcreator/
+*.user
+*.qmlproject.user
