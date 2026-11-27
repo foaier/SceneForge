@@ -1,7 +1,7 @@
 ---
 title: 镜造（SceneForge）开发文档
 doc_id: DEV-000
-version: 0.5-draft
+version: 0.7-draft
 date_created: 2026-11-27
 last_updated: 2026-11-27
 status: discussion-draft
@@ -9,7 +9,7 @@ status: discussion-draft
 
 # 镜造（SceneForge）开发文档
 
-本组文档把产品需求 RFC 转换为技术架构、首阶段范围和后续实现路线。产品行为以 [spec/ 目录](../../spec/) 中 RFC-001 至 RFC-008 为准；若技术文档与 RFC 冲突，应先修订 RFC 或在决策记录中说明，不得静默缩减产品需求。
+本组文档把产品需求 RFC 转换为技术架构、首阶段范围和后续实现路线。产品行为以 [specs/ 目录](../../specs/README.md) 中 RFC-001 至 RFC-008 为准；若技术文档与 RFC 冲突，应先修订 RFC 或在决策记录中说明，不得静默缩减产品需求。
 
 ## 文档
 

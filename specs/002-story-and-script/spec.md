@@ -153,7 +153,7 @@ status: discussion-draft
 
 ## 10. 相关 RFC 与参考
 
-- [RFC-001：产品总纲](./rfc-001-ai-short-drama-production.md)
-- [RFC-003：场次、分镜与视觉资产](./rfc-003-storyboard-and-visual.md)
+- [RFC-001：产品总纲](../001-product-overview/spec.md)
+- [RFC-003：场次、分镜与视觉资产](../003-storyboard-and-visual/spec.md)
 - [Fountain 剧本语法参考](https://fountain.io/syntax/)
 

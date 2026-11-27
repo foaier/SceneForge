@@ -99,8 +99,8 @@ status: discussion-draft
 
 ## 9. 相关 RFC
 
-- [RFC-001：产品总纲](./rfc-001-ai-short-drama-production.md)
-- [RFC-002：作品、故事与剧本](./rfc-002-story-and-script.md)
-- [RFC-004：AI 视频与动画生成](./rfc-004-ai-video-animation.md)
-- [RFC-008：来源、授权、隐私与内容标识](./rfc-008-rights-privacy-compliance.md)
+- [RFC-001：产品总纲](../001-product-overview/spec.md)
+- [RFC-002：作品、故事与剧本](../002-story-and-script/spec.md)
+- [RFC-004：AI 视频与动画生成](../004-ai-video-animation/spec.md)
+- [RFC-008：来源、授权、隐私与内容标识](../008-rights-privacy-compliance/spec.md)
 

@@ -21,13 +21,13 @@ status: discussion-draft
 
 | RFC 编号 | 专题 RFC | 覆盖内容 |
 |---|---|---|
-| RFC-002 | [作品、故事与剧本 RFC](./rfc-002-story-and-script.md) | 作品结构、创作入口、创作圣经、故事开发、剧本编辑、剧本导入与交付 |
-| RFC-003 | [场次、分镜与视觉资产 RFC](./rfc-003-storyboard-and-visual.md) | 场次结构化、镜头设计、镜头板、视觉参考图和连续性检查 |
-| RFC-004 | [AI 视频与动画生成 RFC](./rfc-004-ai-video-animation.md) | 实拍感视频、动画、动态漫画、逐镜头和批量生成 |
-| RFC-005 | [对白、配音与声音 RFC](./rfc-005-voice-sound.md) | 角色声音、配音、授权声音克隆、音乐、音效和口型同步 |
-| RFC-006 | [专业剪辑、特效与媒体工具 RFC](./rfc-006-editing-effects.md) | 多轨剪辑、专业特效、声音后期和常用媒体处理 |
-| RFC-007 | [字幕、语言版本与交付 RFC](./rfc-007-subtitles-localization-delivery.md) | 字幕、翻译、多画幅、平台预设、质量检查与资料交付 |
-| RFC-008 | [来源、授权、隐私与内容标识 RFC](./rfc-008-rights-privacy-compliance.md) | 外部服务授权、资产权利、声音授权、AI 来源和发布标识 |
+| RFC-002 | [作品、故事与剧本 RFC](../002-story-and-script/spec.md) | 作品结构、创作入口、创作圣经、故事开发、剧本编辑、剧本导入与交付 |
+| RFC-003 | [场次、分镜与视觉资产 RFC](../003-storyboard-and-visual/spec.md) | 场次结构化、镜头设计、镜头板、视觉参考图和连续性检查 |
+| RFC-004 | [AI 视频与动画生成 RFC](../004-ai-video-animation/spec.md) | 实拍感视频、动画、动态漫画、逐镜头和批量生成 |
+| RFC-005 | [对白、配音与声音 RFC](../005-voice-sound/spec.md) | 角色声音、配音、授权声音克隆、音乐、音效和口型同步 |
+| RFC-006 | [专业剪辑、特效与媒体工具 RFC](../006-editing-effects/spec.md) | 多轨剪辑、专业特效、声音后期和常用媒体处理 |
+| RFC-007 | [字幕、语言版本与交付 RFC](../007-subtitles-localization-delivery/spec.md) | 字幕、翻译、多画幅、平台预设、质量检查与资料交付 |
+| RFC-008 | [来源、授权、隐私与内容标识 RFC](../008-rights-privacy-compliance/spec.md) | 外部服务授权、资产权利、声音授权、AI 来源和发布标识 |
 
 ### 编号与引用规则
 

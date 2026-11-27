@@ -116,9 +116,9 @@ status: discussion-draft
 
 ## 10. 相关 RFC
 
-- [RFC-001：产品总纲](./rfc-001-ai-short-drama-production.md)
-- [RFC-003：场次、分镜与视觉资产](./rfc-003-storyboard-and-visual.md)
-- [RFC-005：对白、配音与声音](./rfc-005-voice-sound.md)
-- [RFC-006：专业剪辑、特效与媒体工具](./rfc-006-editing-effects.md)
-- [RFC-008：来源、授权、隐私与内容标识](./rfc-008-rights-privacy-compliance.md)
+- [RFC-001：产品总纲](../001-product-overview/spec.md)
+- [RFC-003：场次、分镜与视觉资产](../003-storyboard-and-visual/spec.md)
+- [RFC-005：对白、配音与声音](../005-voice-sound/spec.md)
+- [RFC-006：专业剪辑、特效与媒体工具](../006-editing-effects/spec.md)
+- [RFC-008：来源、授权、隐私与内容标识](../008-rights-privacy-compliance/spec.md)
 

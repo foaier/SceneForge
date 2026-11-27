@@ -68,4 +68,4 @@ Qt 与 FFmpeg 的许可取决于所用模块、编译开关、二进制构建和
 - [FFmpeg 法律与许可说明](https://ffmpeg.org/legal.html)
 - [MLT Framework](https://www.mltframework.org/)
 - [OpenTimelineIO 文档](https://opentimelineio.readthedocs.io/en/latest/)
-- [RFC-006：剪辑、特效与媒体处理](../../spec/rfc-006-editing-effects.md)
+- [RFC-006：剪辑、特效与媒体处理](../../specs/006-editing-effects/spec.md)

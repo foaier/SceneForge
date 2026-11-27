@@ -156,7 +156,7 @@ status: discussion-draft
 
 - **字幕交换要求**：必须支持 SRT 与 W3C WebVTT (VTT) 导入导出。WebVTT 规范：<https://www.w3.org/TR/webvtt1/>
 - **可访问性参考**：W3C WCAG 2.2 的可感知、可操作、可理解和稳健原则用于界面与字幕可读性检查：<https://www.w3.org/TR/WCAG22/>
-- [RFC-001：产品总纲](./rfc-001-ai-short-drama-production.md)
-- [RFC-006：专业剪辑、特效与媒体处理](./rfc-006-editing-effects.md)
-- [RFC-008：来源、授权、隐私与内容标识](./rfc-008-rights-privacy-compliance.md)
+- [RFC-001：产品总纲](../001-product-overview/spec.md)
+- [RFC-006：专业剪辑、特效与媒体处理](../006-editing-effects/spec.md)
+- [RFC-008：来源、授权、隐私与内容标识](../008-rights-privacy-compliance/spec.md)
 

@@ -173,7 +173,7 @@ status: discussion-draft
 - **中国 AI 生成合成内容标识**：《人工智能生成合成内容标识办法》，国家互联网信息办公室等部门于 2025 年发布，自 2025 年 9 月 1 日施行：<https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm>
 - **可访问性参考**：W3C WCAG 2.2：<https://www.w3.org/TR/WCAG22/>
 - **内容来源凭证参考**：C2PA 技术规范，用于识别和表达媒体内容的来源声明；产品只承诺展示或保留可验证的信息，不将凭证本身视为对内容真实性的保证：<https://spec.c2pa.org/>
-- [RFC-001：产品总纲](./rfc-001-ai-short-drama-production.md)
-- [RFC-005：对白、配音与声音](./rfc-005-voice-sound.md)
-- [RFC-007：字幕、语言版本与交付](./rfc-007-subtitles-localization-delivery.md)
+- [RFC-001：产品总纲](../001-product-overview/spec.md)
+- [RFC-005：对白、配音与声音](../005-voice-sound/spec.md)
+- [RFC-007：字幕、语言版本与交付](../007-subtitles-localization-delivery/spec.md)
 
