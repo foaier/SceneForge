@@ -1,9 +1,9 @@
 ---
 title: 镜造（SceneForge）技术架构总览
 doc_id: DEV-001
-version: 0.5-draft
+version: 0.9-draft
 date_created: 2026-11-27
-last_updated: 2026-11-27
+last_updated: 2026-11-28
 status: discussion-draft
 ---
 
@@ -64,7 +64,7 @@ QML 不直接读写数据库、不组装 AI 提示词、不启动外部进程，
 |---|---|---|
 | Workspace | 资料库目录选择、作品列表、新建/复制/归档/删除、工作区可用状态 | 项目存储 |
 | Project | 作品、剧集、保存状态、版本和恢复 | 存储、历史 |
-| Story Bible | 角色、地点、道具、故事规则、确定性状态及连续性关系 | Project、Assets |
+| Story Bible | 角色、地点、道具、故事规则、确定性状态及连续性关系；设定变化形成可审阅的影响线索 | Project、Script、Assets |
 | Script | 故事简报、故事大纲、剧本结构、版本比较、剧本格式导入导出 | Bible、文档适配器 |
 | Storyboard | 场次、镜头、镜头关系、时间预算、视觉参考 | Script、Bible、Assets |
 | Video Generation | 视频/动画镜头的生成输入、候选版本、服务限制和生成后连续性审核 | Storyboard、Bible、Assets、AI Tasks |
@@ -73,43 +73,37 @@ QML 不直接读写数据库、不组装 AI 提示词、不启动外部进程，
 | Assets & Rights | 原始素材、候选素材、派生素材、来源、授权和引用关系 | 存储 |
 | AI Tasks | 按任务选择服务、整理上下文、请求确认、排队、取消、候选预览和任务记录 | Settings、AI Provider、Assets、Bible、Script、Storyboard |
 | Media Tools | 媒体探测、抽帧、预览副本和任务状态 | FFmpeg Adapter、Assets |
-| Checks | 一致性、内容质量、授权/来源风险的定位和状态；读取业务事实并生成检查结果，不修改被检查内容 | Project、Story Bible、Script、Storyboard、Assets & Rights、AI Tasks、Media Tools、Voice & Sound、Subtitles & Localization、Editing |
+| Checks | 一致性、内容质量、设定变化影响和授权/来源风险的定位和状态；读取业务事实并生成检查结果，不修改被检查内容 | Project、Story Bible、Script、Storyboard、Assets & Rights、AI Tasks、Media Tools、Voice & Sound、Subtitles & Localization、Editing |
 | Delivery | 首阶段剧本、分镜、参考图和资料包交付；后续成片、字幕、声音、语言版本和发布预设交付 | Script、Storyboard、Video Generation、Voice & Sound、Subtitles & Localization、Assets、Checks、Media Engine |
 | Settings | 资料库目录、AI 服务配置、默认能力路由、显示和导出偏好；保存服务配置并管理凭据引用，不执行生成任务 | 本地设置、系统密钥库 |
 | Editing | 多轨时间线、剪辑操作、效果、声音后期和成片导出 | Video Generation、Voice & Sound、Subtitles & Localization、Timeline Model、Media Engine |
 
 模块通过明确的应用服务交互；不得用全局可变对象共享作品内容。跨模块引用使用稳定 ID，而不是依赖界面行号或显示名称。
 
+当前设定变化线索由 `StoryImpactAnalyzer` 对比保存前后的创作圣经，并在结构化剧本文本中检索名称和变更字段的字面内容；如果已修改的旧字段值仍出现在剧本段落中，会提示可能与新设定不一致。该结果只是人工复核线索，不等于语义冲突判定；无法定位及尚未交付的视觉对象必须显示为未能判定。影响记录由作品存储层持久化，检查本身不重写剧本或素材。完整的场次、镜头及视觉参考关系仍按 RFC-003 的对象和验收要求实现。
+
 ## 5. 程序和任务边界
 
 桌面主程序负责窗口、作品状态、任务调度和交互。长时间任务不得在界面线程运行：网络请求通过异步网络层处理；CPU 工作进入受限线程池；ffprobe/FFmpeg 作为可监控、可取消的子进程运行。
 
-任务统一提供任务 ID、所属作品、能力类型、状态、进度、可取消标记、输入范围、错误类别和产生的资产 ID。应用关闭或异常退出后，重新打开作品时应能识别未完成任务，并显示其结果是可恢复、需重试还是已中断；不得伪报成功。
+任务统一提供任务 ID、所属作品、能力类型、状态、进度、可取消标记、输入范围、错误类别和产生的资产 ID。当前文本 AI 任务已持久化任务 ID、目标、服务配置快照、上下文清单、请求正文、候选、用量与错误；凭据不进入作品数据库。应用重开时，执行中的任务被标记为中断且结果未知，之后只能在用户复核后建立新的尝试。
 
-首阶段任务状态至少包括：待确认、已排队、执行中、成功、部分成功、失败和已取消。生成候选先保存为候选状态，只有用户明确接受后才成为正式内容。
+当前已交付的文本任务状态包括待发送确认、执行中、成功、失败、已取消、中断、已采纳和已拒绝。发送前可查看及编辑完整请求；故事或剧本候选经人工确认后才写入；创作圣经可对多个建议条目逐项勾选，正式写入时保持为暂定或待决定。当前剧本任务仍只有一次文本响应，尚无部分采用/合并和多响应比较；通用任务队列、媒体任务进度、部分成功和生成资产 ID 仍待后续能力实现。请求正文及候选会保存在作品数据库，目前没有独立清理或保留期设置。
 
-## 6. 推荐源码边界
+## 6. 源码组织
 
 ```text
-src/
-  app/                 # 启动、依赖装配、窗口生命周期
-  presentation/        # QML、C++ ViewModel、导航和对话框
-  application/         # 用例、命令、任务协调和验证
-  domain/              # 作品、创作圣经、剧本、分镜、资产和检查规则
-  ports/               # 存储、AI、文档、媒体和密钥库抽象
-  adapters/
-    persistence/       # SQLite 与文件系统
-    ai/                # 各 AI 服务适配器
-    documents/          # Fountain、FDX、DOCX、PDF 等格式
-    media/              # FFmpeg/ffprobe 与后续播放/渲染引擎
-  resources/            # 图标、主题、默认模板
-tests/
-  unit/
-  integration/
-  qml/
+app/
+  src/
+    main.cpp
+    project/            # 作品、剧本、创作圣经、质量分析和设定影响分析
+    platform/           # 跨功能的平台能力，例如路径校验
+  qml/                  # Qt Quick 界面
+  tests/                # 按能力组织的自动化测试
+  prototypes/           # 有明确验证用途的独立原型
 ```
 
-这是推荐代码组织，不是对现有代码结构的描述。具体库和类名在基础验证通过后再冻结。
+当前源码按功能模块组织：作品相关实现集中在 `src/project/`，避免同一功能的文件散落在多个通用分层目录；平台相关能力只有在跨功能复用时才单独放置。作品生命周期的复制、归档和移除范围确认由 `ProjectLifecycleService` 负责，资料包创建与恢复由 `ProjectPackageService` 负责，数据库读写和迁移由 `ProjectRepository` 负责。随着功能增多，可逐步增加 `script/`、`storyboard/`、`media/`、`ai/` 和 `export/` 等功能模块。目录划分不替代文件和类的单一职责，也不要求每个功能一开始就建立完整目录树。
 
 ## 7. 质量属性
 
